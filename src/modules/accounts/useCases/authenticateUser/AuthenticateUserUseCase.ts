@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { compare } from 'bcryptjs';
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { sign } from 'jsonwebtoken';
+import { AppError } from "../../../../errors/AppError";
 
 interface IRequest {
     email: string;
@@ -31,7 +32,7 @@ class AuthenticateUserUseCase {
         const user = await this.usersRepositoru.findByEmail(email);
 
         if (!user) {
-            throw new Error('Email or password incorrect!');
+            throw new AppError('Email or password incorrect!');
         }
 
         // Senha esta correta
@@ -39,7 +40,7 @@ class AuthenticateUserUseCase {
         const passwordMatch = await compare(password, user.password);
 
         if (!password) {
-            throw new Error('Email or password incorrect!');
+            throw new AppError('Email or password incorrect!');
         }
 
         // Gerar jsonwebtoken

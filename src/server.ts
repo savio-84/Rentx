@@ -3,7 +3,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import './database';
 import './shared/container';
-import { router } from './routes/index';
+import { router } from './shared/infra/http/routes/index';
 import { AppError } from './errors/AppError';
 const app = express();
 

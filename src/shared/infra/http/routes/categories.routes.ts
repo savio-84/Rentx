@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController';
+import { CreateCategoryController } from '../../../../modules/cars/useCases/createCategory/CreateCategoryController';
 
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
